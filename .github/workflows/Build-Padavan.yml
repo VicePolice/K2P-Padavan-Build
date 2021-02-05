@@ -15,6 +15,7 @@ jobs:
       build_variant: ${{ matrix.build_variant }}
       targets: ${{ matrix.targets }}
       images_dir: /opt/images
+      TZ: Asia/Shanghai
     strategy:
       matrix:
         include:
@@ -51,7 +52,7 @@ jobs:
           cd /opt/rt-n56u/trunk
           mkdir -p ${images_dir}
           for m in $targets; do fakeroot ./build_firmware_ci $m; \
-          if [ $? = 0 ]; then cp -f images/*.trx ${images_dir}/$m.trx; else exit 1; fi; \
+          if [ $? = 0 ]; then cp -f images/*.trx ${images_dir}/$m-$(date +"%Y-%m-%d-%H%").trx; else exit 1; fi; \
           ./clear_tree_simple >/dev/null 2>&1; done
       
       - name: Create archive
@@ -74,9 +75,15 @@ jobs:
         if: ${{ github.event_name != 'release' && success() }}
         uses: svenstaro/upload-release-action@2.2.0
         with:
+          name: K2P.K2 Padavan 🚀 | 自动编译 / $(date +"%Y-%m-%d.%H")
           repo_token: ${{ secrets.RELEASE_TOKEN }}
           file: ${{ env.images_dir }}/*.trx
-          tag: ${{ github.ref }}
+          tag: $(date +"%Y-%m-%d.%H%M")
+          body: |   
+            1. 本固件为自动编译
+            2. 使用hanwckf的最新源码 https://github.com/hanwckf/rt-n56u
+            3. PSG12818-K2适配荒野无灯padavan固件网页升级
+            4. AP固件是极简配置，不含无关的自定义扩展，nano为hanwckf原config输出
           overwrite: true
           file_glob: true
     
