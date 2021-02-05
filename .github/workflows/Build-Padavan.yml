@@ -71,14 +71,20 @@ jobs:
           name: ${{ env.image_name }}
           path: ${{ env.images_dir }}/*.7z
       
+      - name: Generate release tag
+        id: tag
+        if: ${{ github.event_name != 'release' && success() }}
+        run: |
+          echo "RELEASE_TAG=$(date +"%Y-%m-%d.%H")" >> $GITHUB_ENV
+      
       - name: Upload images to Releases
         if: ${{ github.event_name != 'release' && success() }}
         uses: svenstaro/upload-release-action@2.2.0
         with:
-          release_name: K2P.K2 Padavan 🚀 | 自动编译 / $(date +"%Y-%m-%d.%H")
+          release_name: K2P.K2 Padavan 🚀 | 自动编译 / ${{ env.RELEASE_TAG }}
           repo_token: ${{ secrets.RELEASE_TOKEN }}
           file: ${{ env.images_dir }}/*.trx
-          tag: $(date +"%Y-%m-%d.%H%M")
+          tag: ${{ env.RELEASE_TAG }}
           body: |   
             1. 本固件为自动编译
             2. 使用hanwckf的最新源码 https://github.com/hanwckf/rt-n56u
