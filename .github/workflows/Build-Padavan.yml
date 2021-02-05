@@ -20,9 +20,9 @@ jobs:
       matrix:
         include:
           - build_variant: "mt7620"
-            targets: "PSG1218_nano"
+            targets: "PSG1218_nano PSG1218-K2-AP"
           - build_variant: "mt7621"
-            targets: "K2P_nano-5.0"
+            targets: "K2P_nano-5.0 K2P-AP-5.0"
     steps:
       - uses: actions/checkout@v2
       - name: Prepare environment
@@ -31,7 +31,13 @@ jobs:
           sudo apt install libtool-bin gperf python-docutils autopoint gettext
      
       - name: Clone source code
-        run: git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+        run: |
+            git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+            cp K2P-AP-5.0.config /opt/rt-n56u/trunk/configs/templates/K2P-AP-5.0.config
+            cp PSG1218-K2-AP.config /opt/rt-n56u/trunk/configs/templates/PSG1218-K2-AP.config
+            cd /opt/rt-n56u/trunk/configs/boards
+            cp -r PSG1218 PSG1218-K2
+            
       
       - name: Run shellcheck
         run: sh /opt/rt-n56u/trunk/tools/shellcheck.sh
