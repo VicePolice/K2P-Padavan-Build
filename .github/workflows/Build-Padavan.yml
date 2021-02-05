@@ -34,7 +34,7 @@ jobs:
         run: git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
       
       - name: Run shellcheck
-        run: sh ./opt/rt-n56u/trunk/tools/shellcheck.sh
+        run: sh /opt/rt-n56u/trunk/tools/shellcheck.sh
       
       - name: Prepare toolchain
         run: |
