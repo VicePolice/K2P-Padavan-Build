@@ -75,7 +75,7 @@ jobs:
         if: ${{ github.event_name != 'release' && success() }}
         uses: svenstaro/upload-release-action@2.2.0
         with:
-          name: K2P.K2 Padavan 🚀 | 自动编译 / $(date +"%Y-%m-%d.%H")
+          release_name: K2P.K2 Padavan 🚀 | 自动编译 / $(date +"%Y-%m-%d.%H")
           repo_token: ${{ secrets.RELEASE_TOKEN }}
           file: ${{ env.images_dir }}/*.trx
           tag: $(date +"%Y-%m-%d.%H%M")
