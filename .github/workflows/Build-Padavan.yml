@@ -22,7 +22,7 @@ jobs:
           - build_variant: "mt7620"
             targets: "PSG1218_nano PSG1218-K2-nano PSG1218-K2-AP"
           - build_variant: "mt7621"
-            targets: "K2P_nano-5.0 K2P-AP-5.0"
+            targets: "K2P_nano K2P_nano-5.0 K2P-AP-5.0"
     steps:
       - uses: actions/checkout@v2
       - name: Prepare environment
@@ -102,7 +102,7 @@ jobs:
 
       - name: Remove old Releases
         uses: dev-drprasad/delete-older-releases@v0.1.0
-        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        if: ${{ github.event_name != 'release' && success() }}
         with:
          keep_latest: 3
          delete_tags: true
