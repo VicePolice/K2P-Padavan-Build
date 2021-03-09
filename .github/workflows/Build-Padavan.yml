@@ -22,7 +22,7 @@ jobs:
           - build_variant: "mt7620"
             targets: "PSG1218_nano PSG1218-K2-nano"
           - build_variant: "mt7621"
-            targets: "K2P-SSR-5.0.config"
+            targets: "K2P-SSR-5.0"
     steps:
       - uses: actions/checkout@v2
       - name: Prepare environment
