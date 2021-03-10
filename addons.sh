@@ -1,8 +1,8 @@
 #!/bin/bash
 
 git clone https://github.com/chongshengB/rt-n56u.git addons
-cp -r addons/user/v2ray user/
-cp -r addons/user/smartdns user/
-cp -r addons/user/trojan user/
-cp -r addons/user/microsocks user/
+cp -r addons/trunk/user/v2ray /opt/rt-n56u/trunk/user/
+cp -r addons/trunk/user/smartdns /opt/rt-n56u/trunk/user/
+cp -r addons/trunk/user/trojan /opt/rt-n56u/trunk/user/
+cp -r addons/trunk/user/microsocks /opt/rt-n56u/trunk/user/
 
