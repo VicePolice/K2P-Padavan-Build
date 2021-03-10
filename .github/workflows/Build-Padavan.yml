@@ -34,12 +34,8 @@ jobs:
         run: |
             git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
             chmod +x addons.sh && sh addons.sh
-            cp PSG1218-K2-nano.config /opt/rt-n56u/trunk/configs/templates/PSG1218-K2-nano.config
-            cp K2P-SSR-5.0.config /opt/rt-n56u/trunk/configs/templates/K2P-SSR-5.0.config
-            cd /opt/rt-n56u/trunk/configs/boards
-            cp -r PSG1218 PSG1218-K2
-            
-      
+            chmod +x setconfig.sh && sh setconfig.sh
+
       - name: Run shellcheck
         run: sh /opt/rt-n56u/trunk/tools/shellcheck.sh
       
