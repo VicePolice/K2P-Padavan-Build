@@ -20,7 +20,7 @@ jobs:
       matrix:
         include:
           - build_variant: "mt7620"
-            targets: ""
+            targets: "PSG1218-K2-nano"
           - build_variant: "mt7621"
             targets: "K2P-SSR-5.0"
     steps:
