@@ -33,7 +33,7 @@ jobs:
       - name: Clone source code
         run: |
             git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
-            chmod +x addons.sh && addons.sh
+            chmod +x addons.sh && sh addons.sh
             cp PSG1218-K2-nano.config /opt/rt-n56u/trunk/configs/templates/PSG1218-K2-nano.config
             cp K2P-SSR-5.0.config /opt/rt-n56u/trunk/configs/templates/K2P-SSR-5.0.config
             cd /opt/rt-n56u/trunk/configs/boards
