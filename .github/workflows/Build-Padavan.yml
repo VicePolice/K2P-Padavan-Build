@@ -48,7 +48,7 @@ jobs:
         run: |
           cd /opt/rt-n56u/trunk
           mkdir -p ${images_dir}
-          for m in $targets; do fakeroot ./build_firmware_ci $m; \
+          for m in $targets; do fakeroot ./build_firmware_modify $m; \
           if [ $? = 0 ]; then cp -f images/*.trx ${images_dir}/$m-$(date +"%Y-%m-%d-%H%").trx; else exit 1; fi; \
           ./clear_tree_simple >/dev/null 2>&1; done
       
