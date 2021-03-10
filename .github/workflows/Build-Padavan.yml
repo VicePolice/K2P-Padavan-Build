@@ -32,7 +32,7 @@ jobs:
      
       - name: Clone source code
         run: |
-            git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
+            git clone --depth=1 https://github.com/chongshengB/rt-n56u.git /opt/rt-n56u
             chmod +x addons.sh && sh addons.sh
             chmod +x setconfig.sh && sh setconfig.sh
 
