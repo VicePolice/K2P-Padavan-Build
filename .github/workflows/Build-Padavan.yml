@@ -28,7 +28,7 @@ jobs:
       - name: Prepare environment
         run: |
           sudo apt update
-          sudo apt install libtool-bin gperf python-docutils autopoint gettext
+          sudo apt install libtool-bin gperf python-docutils autopoint gettext rsync
      
       - name: Clone source code
         run: |
