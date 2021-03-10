@@ -32,7 +32,7 @@ jobs:
      
       - name: Clone source code
         run: |
-            git clone --depth=1 https://github.com/chongshengB/rt-n56u.git /opt/rt-n56u
+            git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
             chmod +x addons.sh && sh addons.sh
             chmod +x setconfig.sh && sh setconfig.sh
 
@@ -48,7 +48,7 @@ jobs:
         run: |
           cd /opt/rt-n56u/trunk
           mkdir -p ${images_dir}
-          for m in $targets; do fakeroot ./build_firmware_modify $m; \
+          for m in $targets; do fakeroot ./build_firmware_ci $m; \
           if [ $? = 0 ]; then cp -f images/*.trx ${images_dir}/$m-$(date +"%Y-%m-%d-%H%").trx; else exit 1; fi; \
           ./clear_tree_simple >/dev/null 2>&1; done
       
