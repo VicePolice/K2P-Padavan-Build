@@ -22,7 +22,7 @@ jobs:
           - build_variant: "mt7620"
             targets: "PSG1218_nano PSG1218-K2-nano"
           - build_variant: "mt7621"
-            targets: "K2P-SSR-5.0"
+            targets: "K2_nano-5.0 K2_SSR-5.0"
     steps:
       - uses: actions/checkout@v2
       - name: Prepare environment
@@ -33,9 +33,8 @@ jobs:
       - name: Clone source code
         run: |
             git clone --depth=1 https://github.com/hanwckf/rt-n56u.git /opt/rt-n56u
-            cp K2P-AP-5.0.config /opt/rt-n56u/trunk/configs/templates/K2P-AP-5.0.config
+            chmod +x addons.sh && addons.sh
             cp PSG1218-K2-nano.config /opt/rt-n56u/trunk/configs/templates/PSG1218-K2-nano.config
-            cp PSG1218-K2-AP.config /opt/rt-n56u/trunk/configs/templates/PSG1218-K2-AP.config
             cp K2P-SSR-5.0.config /opt/rt-n56u/trunk/configs/templates/K2P-SSR-5.0.config
             cd /opt/rt-n56u/trunk/configs/boards
             cp -r PSG1218 PSG1218-K2
