@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm -r /opt/rt-n56u/trunk/user/shadowsocks
+rm -rf /opt/rt-n56u/trunk/user/shadowsocks/
 git clone --depth=1 https://github.com/chongshengB/rt-n56u.git /opt/addons
 cp -rf /opt/addons/trunk/user/v2ray /opt/rt-n56u/trunk/user/
 cp -rf /opt/addons/trunk/user/smartdns /opt/rt-n56u/trunk/user/
